@@ -14,7 +14,6 @@ const questions = [
     "kysst fler än två personer på en kväll.",
     "kissat i duschen.",
     "tagit olagliga droger.",
-    "tappat bort mina nycklar.",
     "varit olyckligt kär.",
     "flyttat hemifrån.",
     "badat naken i havet.",
