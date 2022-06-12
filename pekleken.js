@@ -56,6 +56,7 @@ const questions = [
 ];
 let i = 0;
 let str = i + "/" + questions.length;
+var randomNumber = Math.floor(Math.random() * 5);
 
 function questionGenerator() {
     let text = questions[i];
@@ -66,6 +67,7 @@ function questionGenerator() {
     document.getElementById('pekButton').innerHTML = 'Nästa fråga';
     document.getElementById('pekQuestion').innerHTML = text;
     document.getElementById('questionCount').innerHTML = str;
+    document.getElementById('sipsCount').innerHTML = 'Antal klunkar: ' + randomNumber;
 
     if (i === 50) {
         document.getElementById('pekButton').innerHTML = 'Börja om';
