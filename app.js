@@ -59,6 +59,7 @@ function questionGenerator() {
     console.log(i++);
     str = i + "/" + questions.length;
 
+    document.getElementById('aldrig').innerHTML = 'Nästa fråga';
     document.getElementById('game_question').innerHTML = text;
     document.getElementById('question_count').innerHTML = str;
 
