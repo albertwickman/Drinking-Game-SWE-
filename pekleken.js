@@ -56,9 +56,9 @@ const questions = [
 ];
 let i = 0;
 let str = i + "/" + questions.length;
-var randomNumber = Math.floor(Math.random() * 5) + 1;
 
 function questionGenerator() {
+    let randomNumber = Math.floor(Math.random() * 5) + 1;
     let text = questions[i];
 
     console.log(i++);
