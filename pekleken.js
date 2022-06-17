@@ -56,7 +56,7 @@ const questions = [
 ];
 let i = 0;
 let str = i + "/" + questions.length;
-var randomNumber = Math.floor(Math.random() * 5);
+var randomNumber = Math.floor(Math.random() * 5) + 1;
 
 function questionGenerator() {
     let text = questions[i];
@@ -71,6 +71,7 @@ function questionGenerator() {
 
     if (i === 50) {
         document.getElementById('pekButton').innerHTML = 'Börja om';
+        document.getElementById('sipsCount').innerHTML = null;
     }
 
     if (i === questions.length) {
