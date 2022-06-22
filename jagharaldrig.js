@@ -1,6 +1,6 @@
 const questions = [
     "druckit en öl.",
-    "haft sex.",
+    "haft sex hög",
     "hamnat i fyllecell.",
     "blivit tagen av polisen.",
     "varit otrogen mot någon.",
