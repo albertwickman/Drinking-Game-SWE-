@@ -1,40 +1,43 @@
 <head>
-  <meta charset="utf-8">
+  <meta charSet="utf-8">
 
   <style>
-    text{
-      font-family:Helvetica, Arial, sans-serif;
-      font-size:20px;
+    text {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 20px;
       font-weight: bold;
-      pointer-events:none;
+      pointer-events: none;
       z-index: -30;
     }
-    #chart{
-      position:absolute;
-      width:500px;
-      height:500px;
-      top:0;
-      left:0;
-      z-index: -30;
-    }
-    #question{
+
+    #chart {
       position: absolute;
-      width:400px;
-      height:500px;
-      top:0;
-      left:520px;
+      width: 500px;
+      height: 500px;
+      top: 0;
+      left: 0;
       z-index: -30;
     }
-    #question h1{
+
+    #question {
+      position: absolute;
+      width: 400px;
+      height: 500px;
+      top: 0;
+      left: 520px;
+      z-index: -30;
+    }
+
+    #question h1 {
       font-size: 50px;
       font-weight: bold;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       position: absolute;
       padding: 0;
       margin: 0;
-      top:50%;
-      -webkit-transform:translate(0,-50%);
-      transform:translate(0,-50%);
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
       z-index: -30;
     }
   </style>
@@ -43,25 +46,24 @@
 
 
 <input type="text" id="nameInput" name="name">
-<button onclick="createPlayer()">Add player</button>
-<button onclick="spin()">Spin</button>
+<button onClick="createPlayer()">Add player</button>
+<button onClick="spin()">Spin</button>
 
 <div id="chart"></div>
 <div id="question"><h1></h1></div>
 
 
-
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v3.min.js" charSet="utf-8"></script>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 
 <script>
-  var padding = {top:20, right:40, bottom:0, left:0},
+  var padding = {top: 20, right: 40, bottom: 0, left: 0},
           w = 500 - padding.left - padding.right,
-          h = 500 - padding.top  - padding.bottom,
-          r = Math.min(w, h)/2,
+          h = 500 - padding.top - padding.bottom,
+          r = Math.min(w, h) / 2,
           rotation = 0,
           oldrotation = 0,
           picked = 100000,
@@ -240,12 +242,9 @@
     "Hur mycket yngre/äldre kan du tänka dig att bli tillsammans med?",
   ];
 
-  var players = [
+  var players = [];
 
-  ];
-
-  var data = [
-  ];
+  var data = [];
 
   let j = 0;
   var svg;
@@ -310,7 +309,7 @@
             .attr("cx", 0)
             .attr("cy", 0)
             .attr("r", 60)
-            .style({"fill":"white","cursor":"pointer"});
+            .style({"fill": "white", "cursor": "pointer"});
 
     //spin text
     container.append("text")
@@ -318,35 +317,33 @@
             .attr("y", 15)
             .attr("text-anchor", "middle")
             .text("SPIN")
-            .style({"font-weight":"bold", "font-size":"30px"});
-
+            .style({"font-weight": "bold", "font-size": "30px"});
 
 
     document.getElementById('nameInput').value = null;
   }
 
 
-
   container.on("click", spin);
 
 
-  function spin(d){
+  function spin(d) {
     container.on("click", null);
     //all slices have been seen, all done
-    var  ps          = 360/data.length,
-            pieslice = Math.round(1440/data.length),
-            rng      = Math.floor((Math.random() * 1440) + 360);
+    var ps = 360 / data.length,
+            pieslice = Math.round(1440 / data.length),
+            rng = Math.floor((Math.random() * 1440) + 360);
 
     rotation = (Math.round(rng / ps) * ps);
 
-    picked = Math.round(data.length - (rotation % 360)/ps);
+    picked = Math.round(data.length - (rotation % 360) / ps);
     picked = picked >= data.length ? (picked % data.length) : picked;
 
-    rotation += 90 - Math.round(ps/2);
+    rotation += 90 - Math.round(ps / 2);
     vis.transition()
             .duration(3000)
             .attrTween("transform", rotTween)
-            .each("end", function(){
+            .each("end", function () {
 
               //populate question
               d3.select("#question h1")
@@ -362,29 +359,29 @@
 
     //make arrow
     svg.append("g")
-            .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
+            .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h / 2) + padding.top) + ")")
             .append("path")
-            .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
-            .style({"fill":"black"});
+            .attr("d", "M-" + (r * .15) + ",0L0," + (r * .05) + "L0,-" + (r * .05) + "Z")
+            .style({"fill": "black"});
   }
 
 
   function rotTween(to) {
     var i = d3.interpolate(oldrotation % 360, rotation);
-    return function(t) {
+    return function (t) {
       return "rotate(" + i(t) + ")";
     };
   }
 
-  function getRandomNumbers(){
+  function getRandomNumbers() {
     var array = new Uint16Array(1000);
     var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
-    if(window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function"){
+    if (window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function") {
       window.crypto.getRandomValues(array);
       console.log("works");
     } else {
       //no support for crypto, get crappy random numbers
-      for(var i=0; i < 1000; i++){
+      for (var i = 0; i < 1000; i++) {
         array[i] = Math.floor(Math.random() * 100000) + 1;
       }
     }
