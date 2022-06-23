@@ -305,7 +305,7 @@ function spin(d){
         .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
         .append("path")
         .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
-        .style({"fill":"black"});
+        .style({"fill":"white"});
 }
 
 
