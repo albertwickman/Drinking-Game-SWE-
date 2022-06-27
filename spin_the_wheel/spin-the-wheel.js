@@ -1,7 +1,7 @@
-var padding = {top:20, right:40, bottom:0, left:0},
+var padding = {top: 20, right: 40, bottom: 0, left: 0},
     w = 500 - padding.left - padding.right,
-    h = 500 - padding.top  - padding.bottom,
-    r = Math.min(w, h)/2,
+    h = 500 - padding.top - padding.bottom,
+    r = Math.min(w, h) / 2,
     rotation = 0,
     oldrotation = 0,
     picked = 100000,
@@ -180,12 +180,9 @@ var questions = [
     "Hur mycket yngre/äldre kan du tänka dig att bli tillsammans med?",
 ];
 
-var players = [
+var players = [];
 
-];
-
-var data = [
-];
+var data = [];
 
 let j = 0;
 var svg;
@@ -203,6 +200,10 @@ svg = d3.select('#chart')
 
 function renderWheel() {
     data.push({"label": players[j], "value": j});
+    const ul = document.getElementById("player_ul");
+    const li = document.createElement("li");
+    li.appendChild(document.createTextNode(players[j]));
+    ul.appendChild(li);
     j++;
 
     pie = d3.layout.pie().sort(null).value(function (d) {
@@ -250,7 +251,7 @@ function renderWheel() {
         .attr("cx", 0)
         .attr("cy", 0)
         .attr("r", 60)
-        .style({"fill":"white","cursor":"pointer"});
+        .style({"fill": "white", "cursor": "pointer"});
 
     //spin text
     container.append("text")
@@ -258,35 +259,29 @@ function renderWheel() {
         .attr("y", 15)
         .attr("text-anchor", "middle")
         .text("SPIN")
-        .style({"font-weight":"bold", "font-size":"30px"});
-
+        .style({"font-weight": "bold", "font-size": "30px"});
 
 
     document.getElementById('nameInput').value = null;
 }
 
-
-
-container.on("click", spin);
-
-
-function spin(d){
+function spin(d) {
     container.on("click", null);
     //all slices have been seen, all done
-    var  ps          = 360/data.length,
-        pieslice = Math.round(1440/data.length),
-        rng      = Math.floor((Math.random() * 1440) + 360);
+    var ps = 360 / data.length,
+        pieslice = Math.round(1440 / data.length),
+        rng = Math.floor((Math.random() * 1440) + 360);
 
     rotation = (Math.round(rng / ps) * ps);
 
-    picked = Math.round(data.length - (rotation % 360)/ps);
+    picked = Math.round(data.length - (rotation % 360) / ps);
     picked = picked >= data.length ? (picked % data.length) : picked;
 
-    rotation += 90 - Math.round(ps/2);
+    rotation += 90 - Math.round(ps / 2);
     vis.transition()
         .duration(3000)
         .attrTween("transform", rotTween)
-        .each("end", function(){
+        .each("end", function () {
 
             //populate question
             d3.select("#question h1")
@@ -302,29 +297,29 @@ function spin(d){
 
     //make arrow
     svg.append("g")
-        .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
+        .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h / 2) + padding.top) + ")")
         .append("path")
-        .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
-        .style({"fill":"white"});
+        .attr("d", "M-" + (r * .15) + ",0L0," + (r * .05) + "L0,-" + (r * .05) + "Z")
+        .style({"fill": "white"});
 }
 
 
 function rotTween(to) {
     var i = d3.interpolate(oldrotation % 360, rotation);
-    return function(t) {
+    return function (t) {
         return "rotate(" + i(t) + ")";
     };
 }
 
-function getRandomNumbers(){
+function getRandomNumbers() {
     var array = new Uint16Array(1000);
     var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
-    if(window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function"){
+    if (window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function") {
         window.crypto.getRandomValues(array);
         console.log("works");
     } else {
         //no support for crypto, get crappy random numbers
-        for(var i=0; i < 1000; i++){
+        for (var i = 0; i < 1000; i++) {
             array[i] = Math.floor(Math.random() * 100000) + 1;
         }
     }
@@ -341,6 +336,7 @@ function createPlayer() {
     players.push(val);
     for (var i in players) {
         console.log(players[i]);
+
     }
     renderWheel();
 }
