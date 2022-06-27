@@ -259,7 +259,7 @@ function renderWheel() {
         .attr("y", 10)
         .attr("text-anchor", "middle")
         .text("SPIN")
-        .style({"font-weight": "bold", "font-size": "30px", "font-family": "Circular S"});
+        .style({"font-weight": "bold", "font-size": "30px"});
 
 
     document.getElementById('nameInput').value = null;

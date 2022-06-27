@@ -64,8 +64,8 @@
 
 <script>
   var padding = {top: 0, right: 0, bottom: 0, left: 0},
-          w = 350 - padding.left - padding.right,
-          h = 350 - padding.top - padding.bottom,
+          w = 350;
+          h = 350;
           r = Math.min(w, h) / 2,
           rotation = 0,
           oldrotation = 0,
@@ -324,7 +324,7 @@
             .attr("y", 10)
             .attr("text-anchor", "middle")
             .text("SPIN")
-            .style({"font-weight": "bold", "font-size": "30px", "font-family": "Circular S"});
+            .style({"font-weight": "bold", "font-size": "30px"});
 
 
     document.getElementById('nameInput').value = null;
