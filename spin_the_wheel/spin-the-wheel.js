@@ -256,7 +256,7 @@ function renderWheel() {
     //spin text
     container.append("text")
         .attr("x", 0)
-        .attr("y", 15)
+        .attr("y", 10)
         .attr("text-anchor", "middle")
         .text("SPIN")
         .style({"font-weight": "bold", "font-size": "30px"});
@@ -265,8 +265,8 @@ function renderWheel() {
     document.getElementById('nameInput').value = null;
 }
 
+
 function spin(d) {
-    container.on("click", null);
     //all slices have been seen, all done
     var ps = 360 / data.length,
         pieslice = Math.round(1440 / data.length),
@@ -292,7 +292,7 @@ function spin(d) {
             console.log(data[picked].value)
 
             /* Comment the below line for restrict spin to single time */
-            container.on("click", spin);
+            //container.on("click", spin);
         });
 
     //make arrow
