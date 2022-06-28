@@ -6,6 +6,7 @@
       font-family: 'customFont', sans-serif; /*a name to be used later*/
       src: url('spin_the_wheel/circular-std-medium-500.ttf'); /*URL to font*/
     }
+
     text {
       font-family: sans-serif;
       font-size: 20px;
@@ -52,6 +53,7 @@
 <input type="text" id="nameInput" name="name">
 <button onClick="createPlayer()">Add player</button>
 <button onClick="spin()">Spin</button>
+<button onClick="reloadPage()">Start over</button>
 
 <div id="chart"></div>
 <div id="question"><h1></h1></div>
@@ -328,7 +330,7 @@
             .attr("y", 10)
             .attr("text-anchor", "middle")
             .text("SPIN")
-            .style({"font-weight": "bold", "font-size": "30px"});
+            .style({"font-weight": "bold", "font-size": "30px", "font-family": "sans-serif"});
 
 
     document.getElementById('nameInput').value = null;
@@ -402,12 +404,20 @@
 
   function createPlayer() {
     const val = document.getElementById('nameInput').value;
-    players.push(val);
+    if (val !== "") {
+      players.push(val);
+    }
+    else {
+      return;
+    }
     for (var i in players) {
       console.log(players[i]);
-
     }
     renderWheel();
+  }
+
+  function reloadPage() {
+    return window.location.reload();
   }
 
 </script>

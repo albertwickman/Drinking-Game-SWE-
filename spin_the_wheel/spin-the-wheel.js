@@ -259,7 +259,7 @@ function renderWheel() {
         .attr("y", 10)
         .attr("text-anchor", "middle")
         .text("SPIN")
-        .style({"font-weight": "bold", "font-size": "30px"});
+        .style({"font-weight": "bold", "font-size": "30px", "font-family": "sans-serif"});
 
 
     document.getElementById('nameInput').value = null;
@@ -333,10 +333,18 @@ function getRandomQuestion() {
 
 function createPlayer() {
     const val = document.getElementById('nameInput').value;
-    players.push(val);
+    if (val !== "") {
+        players.push(val);
+    }
+    else {
+        return;
+    }
     for (var i in players) {
         console.log(players[i]);
-
     }
     renderWheel();
+}
+
+function reloadPage() {
+    return window.location.reload();
 }
