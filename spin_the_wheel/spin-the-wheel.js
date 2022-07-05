@@ -1,6 +1,6 @@
 var padding = {top: 0, right: 0, bottom: 0, left: 0},
-    w = 350;
-h = 350;
+    w = 300;
+h = 300;
 r = Math.min(w, h) / 2,
     rotation = 0,
     oldrotation = 0,
