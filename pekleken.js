@@ -54,27 +54,27 @@ const questions = [
     "blir alltid för full?",
     "50e och sista frågan, VATTENFALL! (Den som läser börjar)",
 ];
-let i = 0;
-let str = i + "/" + questions.length;
+
+let shuffledQuestions = shuffleArray([...questions]);
+let index = 0;
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 function questionGenerator() {
-    let randomNumber = Math.floor(Math.random() * 5) + 1;
-    let text = questions[i];
-
-    console.log(i++);
-    str = i + "/" + questions.length;
-
-    document.getElementById('pekButton').innerHTML = 'Nästa fråga';
-    document.getElementById('pekQuestion').innerHTML = text;
-    document.getElementById('questionCount').innerHTML = str;
-    document.getElementById('sipsCount').innerHTML = 'Antal klunkar: ' + randomNumber;
-
-    if (i === 50) {
-        document.getElementById('pekButton').innerHTML = 'Börja om';
-        document.getElementById('sipsCount').innerHTML = null;
+    if (index >= shuffledQuestions.length) {
+        shuffledQuestions = shuffleArray([...questions]);
+        index = 0;
     }
 
-    if (i === questions.length) {
-        i = 0;
-    }
+    let text = shuffledQuestions[index++];
+
+    console.log(index - 1);
+    document.getElementById('aldrig').innerHTML = 'Nästa fråga';
+    document.getElementById('game_question').innerHTML = text;
 }
