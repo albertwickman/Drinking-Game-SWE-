@@ -75,6 +75,6 @@ function questionGenerator() {
     let text = shuffledQuestions[index++];
 
     console.log(index - 1);
-    document.getElementById('aldrig').innerHTML = 'Nästa fråga';
-    document.getElementById('game_question').innerHTML = text;
+    document.getElementById('pekButton').innerHTML = 'Nästa fråga';
+    document.getElementById('pekQuestion').innerHTML = text;
 }
