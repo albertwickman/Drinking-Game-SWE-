@@ -175,18 +175,25 @@ const questions = [
     "Hur mycket yngre/äldre kan du tänka dig att bli tillsammans med?"
 ];
 
+let shuffledQuestions = shuffleArray([...questions]);
+let index = 0;
 
-let i = 0;
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 function questionGenerator() {
-    let text = questions[i];
+    if (index >= shuffledQuestions.length) {
+        shuffledQuestions = shuffleArray([...questions]);
+        index = 0;
+    }
 
-    console.log(i++);
+    let text = shuffledQuestions[index++];
 
     document.getElementById('nextQuestion').innerHTML = 'Nästa fråga';
     document.getElementById('200Question').innerHTML = text;
-
-    if (i === questions.length) {
-        i = 0;
-    }
 }
