@@ -50,20 +50,27 @@ const questions = [
     "skickat nakenbilder på mig själv till någon.",
     "dejtat någon som varit tio år äldre än mig.",
 ];
-let i = 0;
-let str = i + "/" + questions.length;
+
+let shuffledQuestions = shuffleArray([...questions]);
+let index = 0;
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 function questionGenerator() {
-    let text = questions[i];
+    if (index >= shuffledQuestions.length) {
+        shuffledQuestions = shuffleArray([...questions]);
+        index = 0;
+    }
 
-    console.log(i++);
-    str = i + "/" + questions.length;
+    let text = shuffledQuestions[index++];
 
+    console.log(index - 1);
     document.getElementById('aldrig').innerHTML = 'Nästa fråga';
     document.getElementById('game_question').innerHTML = text;
-    document.getElementById('question_count').innerHTML = str;
-
-    if (i === questions.length) {
-        i = 0;
-    }
 }
