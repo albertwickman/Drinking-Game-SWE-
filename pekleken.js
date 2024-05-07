@@ -8,7 +8,6 @@ const questions = [
     "avvisar flest personer?",
     "går oftast efter någon som är yngre än sig själv?",
     "har mest hybris?",
-    "10e frågan, SKÅL!",
 
     "är svårast att få i säng?",
     "har tagit mest droger?",
@@ -19,7 +18,6 @@ const questions = [
     "är mest kinky?",
     "är bäst på att kyssas?",
     "är den största gold diggern?",
-    "20e frågan, SKÅL!",
 
     "är mest sexuellt frustrerad?",
     "får förhållande i år?",
@@ -30,7 +28,6 @@ const questions = [
     "har finast leende?",
     "klär sig bäst?",
     "kommer bli känd?",
-    "30e frågan, SKÅL!",
 
     "är mest utseendefixerad?",
     "är oskyldigast?",
@@ -41,7 +38,6 @@ const questions = [
     "får du vackrast barn med?",
     "är bäst på att strippa?",
     "har bäst musiksmak?",
-    "40e frågan, SKÅL!",
 
     "har haft sex med flest nationaliteter?",
     "har haft trekant?",
@@ -52,7 +48,6 @@ const questions = [
     "behöver dricka vatten just nu?",
     "hittar vi på McDonald's inatt?",
     "blir alltid för full?",
-    "50e och sista frågan, VATTENFALL! (Den som läser börjar)",
 ];
 
 let shuffledQuestions = shuffleArray([...questions]);
