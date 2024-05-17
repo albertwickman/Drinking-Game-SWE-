@@ -305,7 +305,6 @@ const questions = [
     "Har du legat på en båt?",
     "3 egenskaper som din drömkille/drömtjej har",
     "3 saker som en kille/tjej måste ha om du ska involvera dig i dem seriöst",
-    "Samma som 60 men som hon/han inte får ha",
     "3 saker du avskyr med det motsatta könet",
     "3 saker du älskar med det motsatta könet",
     "Favorit-soundtrack under sex?",
