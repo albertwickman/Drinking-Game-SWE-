@@ -75,8 +75,6 @@ const questions = [
     "Skulle mest troligt hålla handen på första dejten?",
     "Skulle mest troligt ta med en vän på en dejt som backup?"
 ];
-```
-
 
 let shuffledQuestions = shuffleArray([...questions]);
 let index = 0;
@@ -95,6 +93,8 @@ function questionGenerator() {
         index = 0;
     }
 
+    console.log("new");
+    
     let text = shuffledQuestions[index++];
 
     console.log(index - 1);
